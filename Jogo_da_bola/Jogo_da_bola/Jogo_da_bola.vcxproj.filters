@@ -18,8 +18,16 @@
     <ClCompile Include="Jogo_da_bola.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bola.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bola.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
