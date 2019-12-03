@@ -1,5 +1,3 @@
 ﻿  Jogo_da_bola.cpp
-C:\Users\LCS197\source\repos\Computacao_Grafica\Jogo_da_bola\Jogo_da_bola\Jogo_da_bola.cpp(9,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-C:\Users\LCS197\source\repos\Computacao_Grafica\Jogo_da_bola\Jogo_da_bola\Jogo_da_bola.cpp(10,7): warning C4930: 'Bola bola1(void)': prototyped function not called (was a variable definition intended?)
-C:\Users\LCS197\source\repos\Computacao_Grafica\Jogo_da_bola\Jogo_da_bola\Jogo_da_bola.cpp(11,7): warning C4930: 'Bola bola2(void)': prototyped function not called (was a variable definition intended?)
+C:\Users\LCS197\source\repos\Computacao_Grafica\Jogo_da_bola\Jogo_da_bola\Jogo_da_bola.cpp(61,33): warning C4326: return type of 'main' should be 'int' instead of 'void'
   Jogo_da_bola.vcxproj -> C:\Users\LCS197\source\repos\Computacao_Grafica\Jogo_da_bola\Debug\Jogo_da_bola.exe
