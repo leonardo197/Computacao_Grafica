@@ -8,13 +8,14 @@ class Bola
 	float velocidade;
 	bool movimento;
 	int vidas;
-	GLfloat x;
-	GLfloat y;
+	float x;
+	float y;
 public:
 	Bola();
-	Bola(float red, float green, float blue, GLfloat x, GLfloat y);
+	Bola(float red, float green, float blue);
 	Bola(float red, float green, float blue, float tamanho, bool movimento, float velocidade, float vidas);
 	void gerarBola();
+	void moverBola();
 	float getTamanho();
 	void  setTamanho(float tamanho);
 	float getRed();
@@ -29,8 +30,8 @@ public:
 	void  setMovimento(bool movimento);
 	float getVidas();
 	void  setVidas(float vidas);
-	GLfloat getX();
-	void  setX(GLfloat x);
-	GLfloat getY();
-	void  setY(GLfloat y);
+	float getX();
+	void  setX(float x);
+	float getY();
+	void  setY(float y);
 };
