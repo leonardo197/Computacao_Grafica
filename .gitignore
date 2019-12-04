@@ -7,3 +7,10 @@ Computacao_Grafica / .vs /
 * .ilk
 * .tlog
 Jogo_da_bola/.vs/
+*.vcxproj
+*.obj
+*.log
+*.idb
+*.pdb
+*.tlog
+*.lastbuildstate
