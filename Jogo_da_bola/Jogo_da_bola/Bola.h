@@ -1,4 +1,5 @@
 #pragma once
+#include"Window.h"
 class Bola
 {
 private:
@@ -14,5 +15,5 @@ public:
 	Bola(float red, float green, float blue);
 	Bola(float red, float green, float blue, float tamanho, float vidas);
 	void pintaBola();
-	void moverBola();
+	void moverBola(Window window);
 };

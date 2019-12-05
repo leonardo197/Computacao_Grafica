@@ -1,4 +1,5 @@
 #include"Bola.h"
+#include"Window.h"
 #include <GL/glut.h>
 #include <stdio.h>
 #include <math.h>
@@ -8,8 +9,8 @@ Bola::Bola(void) {
 	this->red=1;
 	this->green=1;
 	this->blue=1;
-	this->velocidadeY;
-	this->velocidadeX;
+	this->velocidadeY=1;
+	this->velocidadeX=5;
 	this->x=400;
 	this->y=400;
 	this->vidas=3;
@@ -19,8 +20,8 @@ Bola::Bola(float red, float green, float blue) {
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
-	this->velocidadeY;
-	this->velocidadeX;
+	this->velocidadeY = 1;
+	this->velocidadeX = 2;
 	this->x = 200;
 	this->y = 200;
 	this->vidas = 3;
@@ -30,8 +31,8 @@ Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
-	this->velocidadeY;
-	this->velocidadeX;
+	this->velocidadeY = 2;
+	this->velocidadeX = 1;
 	this->x = 200;
 	this->y = 300;
 	this->vidas = vidas;
@@ -49,9 +50,26 @@ void Bola::pintaBola() {
 	}
 	glEnd();
 }
-void Bola::moverBola() {
+void Bola::moverBola(Window window) {
 	x += velocidadeX;
 	y += velocidadeY;
+
+	if (x >= window.windowX - tamanho) {
+		x = window.windowX - tamanho;
+		velocidadeX = -velocidadeX;
+	}
+	if (x <= tamanho) {
+		x = tamanho;
+		velocidadeX = -velocidadeX;
+	}
+	if (y >= window.windowY - tamanho) {
+		y = window.windowY - tamanho;
+		velocidadeY = -velocidadeY;
+	}
+	if (y <= tamanho) {
+		y = tamanho;
+		velocidadeY = -velocidadeY;
+	}
 
 }
 

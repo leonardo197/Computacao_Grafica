@@ -1,6 +1,6 @@
 #include"Window.h"
 Window::Window(int WindowX, int WindowY) {
-	this->WindowX = WindowX;
-	this->WindowY = WindowY;
+	this->windowX = WindowX;
+	this->windowY = WindowY;
 
 }
