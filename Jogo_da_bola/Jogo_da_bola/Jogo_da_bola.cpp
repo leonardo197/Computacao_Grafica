@@ -2,10 +2,12 @@
 #include <stdio.h>
 #include <math.h>
 #include "Bola.h"
+#include"Window.h"
 #include<vector>
 //var
-int windowX = 640;
-int windowY = 640;
+
+Window window(640, 640);
+
 std::vector<Bola> bolas;
 int FPS = 60;
 
@@ -79,13 +81,13 @@ void testes() {
 void main(int argc, char** argv){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowSize(windowX, windowY);
+	glutInitWindowSize(window.WindowX, window.WindowY);
 	glutInitWindowPosition(500, 500);
 	glutCreateWindow("Jogo da bola");
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluOrtho2D(0, windowX, 0, windowY);
+	gluOrtho2D(0, window.WindowX, 0, window.WindowY);
 	testes();
 	glutDisplayFunc(display);
 	glutMouseFunc(rato);

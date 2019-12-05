@@ -49,4 +49,9 @@ void Bola::pintaBola() {
 	}
 	glEnd();
 }
+void Bola::moverBola() {
+	x += velocidadeX;
+	y += velocidadeY;
+
+}
 
