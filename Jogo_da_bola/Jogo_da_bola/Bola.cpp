@@ -4,41 +4,41 @@
 #include <math.h>
 
 Bola::Bola(void) {
-	setTamanho(0.3);
-    setRed(1);
-	setGreen(1);
-	setBlue(1);
-	setVelocidade(1);
-	setMovimento(false);
-	setVidas(3);
-	//gerarBola();
+	this->tamanho = 20;
+	this->red=1;
+	this->green=1;
+	this->blue=1;
+	this->velocidadeY;
+	this->velocidadeX;
+	this->x=400;
+	this->y=400;
+	this->vidas=3;
 }
 Bola::Bola(float red, float green, float blue) {
-	setTamanho(20);
-	setRed(red);
-	setGreen(green);
-	setBlue(blue);
-	setVelocidade(1);
-	setMovimento(false);
-	setVidas(3);
-	setX(100);
-	setY(200);
+	this->tamanho = 20;
+	this->red = red;
+	this->green = green;
+	this->blue = blue;
+	this->velocidadeY;
+	this->velocidadeX;
+	this->x = 200;
+	this->y = 200;
+	this->vidas = 3;
 }
-Bola::Bola(float red, float green, float blue, float tamanho, bool movimento, float velocidade, float vidas) {
-	setTamanho(tamanho);
-	setRed(red);
-	setGreen(green);
-	setBlue(blue);
-	setVelocidade(velocidade);
-	setMovimento(movimento);
-	setVidas(vidas);
-	//gerarBola();
-
+Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
+	this->tamanho = tamanho;
+	this->red = red;
+	this->green = green;
+	this->blue = blue;
+	this->velocidadeY;
+	this->velocidadeX;
+	this->x = 200;
+	this->y = 300;
+	this->vidas = vidas;
 }
 
-void Bola::gerarBola() {
+void Bola::pintaBola() {
 	glClear(GL_COLOR_BUFFER_BIT);
-
 	glColor3f(red, green, blue);
 	glBegin(GL_TRIANGLE_FAN);
 	int numSegments = 100;
@@ -50,59 +50,3 @@ void Bola::gerarBola() {
 	glEnd();
 }
 
-
-float Bola::getTamanho(){
-	return tamanho;
-}
-void  Bola::setTamanho(float tamanho) {
-	this->tamanho= tamanho;
-}
-float Bola::getRed() {
-	return red;
-}
-void  Bola::setRed(float red) {
-	this->red = red;
-}
-float Bola::getGreen(){
-	return green;
-}
-void  Bola::setGreen(float green) {
-	this->green = green;
-}
-float Bola::getBlue() {
-	return blue;
-}
-void  Bola::setBlue(float blue) {
-	this->blue = blue;
-}
-float Bola::getVelocidade() {
-	return velocidade;
-}
-void  Bola::setVelocidade(float velocidade) {
-	this->velocidade = velocidade;
-}
-
-bool  Bola::getMovimento() {
-	return movimento;
-}
-void  Bola::setMovimento(bool movimento) {
-	this->movimento = movimento;
-}
-float Bola::getVidas() {
-	return vidas;
-}
-void  Bola::setVidas(float Vidas) {
-	this->vidas = Vidas;
-}
-float Bola::getX() {
-	return x;
-};
-void  Bola::setX(float x) {
-	this->x = x;
-};
-float Bola::getY() {
-	return y;
-};
-void  Bola::setY(float y) {
-	this->y = y;
-};

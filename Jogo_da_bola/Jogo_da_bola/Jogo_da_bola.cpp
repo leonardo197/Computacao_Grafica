@@ -2,10 +2,12 @@
 #include <stdio.h>
 #include <math.h>
 #include "Bola.h"
+#include<vector>
 //var
 int windowX = 640;
 int windowY = 640;
-
+std::vector<Bola> bolas;
+int FPS = 60;
 
 void teclas(unsigned char key, int x, int y) {
 	switch (key) {
@@ -45,14 +47,35 @@ void rato(GLint button, GLint state, GLint x, GLint y) {
 }
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
-	Bola bola(0, 0, 1);
-	//Bola bola1(0, 1, 0, 1, 0.1);
-	//bola1.gerarBola();
-	bola.gerarBola();
+	Bola bola1(0, 1, 1, 20, 3);
+	Bola bola(0, 1, 0);
+	Bola bola2 = Bola();
+	bola.pintaBola();
+	bola1.pintaBola();
+	bola2.pintaBola();
+
+
+
+	//for (int i = 0; i < bolas.size(); i++) {
+	//	bolas[i].pintaBola();
+	//}
 
 	glutSwapBuffers();
 }
+void timer(int)
+{
+	glutPostRedisplay();
+	glutTimerFunc(1000 / FPS, timer, 0);
+}
+void testes() {
+	Bola bola1(0, 1, 1, 20, 3);
+	Bola bola(0, 1, 0);
+	Bola bola2 = Bola();
 
+	bolas.push_back(bola1);
+	bolas.push_back(bola);
+	bolas.push_back(bola2);
+}
 void main(int argc, char** argv){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
@@ -63,9 +86,11 @@ void main(int argc, char** argv){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	gluOrtho2D(0, windowX, 0, windowY);
+	testes();
 	glutDisplayFunc(display);
 	glutMouseFunc(rato);
 	glutKeyboardFunc(teclas);
+	glutTimerFunc(0, timer, 0);
 	glutMainLoop();
 }
 
