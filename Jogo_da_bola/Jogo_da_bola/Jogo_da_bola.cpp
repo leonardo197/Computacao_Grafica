@@ -13,6 +13,12 @@ Window window(640, 640);
 std::vector<Bola> bolas;
 int FPS = 60;
 
+void pausa() {
+	for (size_t i = 0; i < bolas.size(); i++) {
+		bolas[i].pausaBola();
+	}
+}
+
 void teclas(unsigned char key, int x, int y) {
 	switch (key) {
 	case 'q':
@@ -22,6 +28,10 @@ void teclas(unsigned char key, int x, int y) {
 	case 'r':
 	case 'R':
 
+		break;
+	case 'p':
+	case 'P':
+		pausa();
 		break;
 	case 'g':
 	case 'G':
@@ -37,6 +47,7 @@ void teclas(unsigned char key, int x, int y) {
 
 	}
 }
+
 // mouse callback
 void rato(GLint button, GLint state, GLint x, GLint y) {
 

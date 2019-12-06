@@ -7,6 +7,8 @@ private:
 	float red, green, blue;
 	float velocidadeX;
 	float velocidadeY;
+	float velocidadeXP;
+	float velocidadeYP;
 	float x;
 	float y;
 	int vidas;
@@ -16,4 +18,5 @@ public:
 	Bola(float red, float green, float blue, float tamanho, float vidas);
 	void pintaBola();
 	void moverBola(Window window);
+	void pausaBola();
 };

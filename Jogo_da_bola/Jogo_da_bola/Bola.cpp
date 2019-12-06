@@ -17,6 +17,8 @@ Bola::Bola() {
 	this->x= tamanho;
 	this->y= tamanho;
 	this->vidas=3;
+	this->velocidadeXP=0;
+	this->velocidadeYP=0;
 }
 Bola::Bola(float red, float green, float blue) {
 	this->tamanho = 20;
@@ -28,6 +30,8 @@ Bola::Bola(float red, float green, float blue) {
 	this->x = 200;
 	this->y = 200;
 	this->vidas = 3;
+	this->velocidadeXP = 0;
+	this->velocidadeYP = 0;
 }
 Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->tamanho = tamanho;
@@ -40,6 +44,8 @@ Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->x = 200;
 	this->y = 300;
 	this->vidas = vidas;
+	this->velocidadeXP = 0;
+	this->velocidadeYP = 0;
 }
 
 void Bola::pintaBola() {
@@ -73,6 +79,19 @@ void Bola::moverBola(Window window) {
 		y = tamanho;
 		velocidadeY = -velocidadeY;
 	}
+}
+void Bola::pausaBola() {
+	if (velocidadeXP==0 &&velocidadeYP==0) {
+		 velocidadeXP= velocidadeX;
+		 velocidadeYP= velocidadeY;
+		 velocidadeX=0;
+		 velocidadeY=0;
+	}
+	else {
+		velocidadeX = velocidadeXP;
+		velocidadeY = velocidadeXP;
+		velocidadeXP = 0;
+		velocidadeYP = 0;
+	}
 
 }
-
