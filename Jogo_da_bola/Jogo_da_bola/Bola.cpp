@@ -9,9 +9,9 @@
 
 Bola::Bola() {
 	this->tamanho = 20;
-	this->red=1;
-	this->green=1;
-	this->blue=1;
+	this->red= (rand() % 365+1)/ 365.0;
+	this->green= (rand() % 365 +1) / 365.0;
+	this->blue= (rand() % 365 +1) / 365.0;
 	this->velocidadeY= rand() % 10+5;
 	this->velocidadeX=rand() % 10+5;
 	this->x= tamanho;
@@ -25,8 +25,8 @@ Bola::Bola(float red, float green, float blue) {
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
-	this->velocidadeY = rand() % 10 + 1;
-	this->velocidadeX = rand() % 10 + 1;
+	this->velocidadeY = rand() % 10 + 5;
+	this->velocidadeX = rand() % 10 + 5;
 	this->x = 200;
 	this->y = 200;
 	this->vidas = 3;
@@ -38,9 +38,9 @@ Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
-	this->velocidadeY = rand() % 10 + 1;
+	this->velocidadeY = rand() % 10 + 5;
 	srand((int)time(0));//gera uma nova srand  para os valores seren diferentes cada ves que seija otilisada
-	this->velocidadeX = rand() % 10 + 1;
+	this->velocidadeX = rand() % 10 + 5;
 	this->x = 200;
 	this->y = 300;
 	this->vidas = vidas;
@@ -54,7 +54,7 @@ void Bola::pintaBola() {
 	int numSegments = 100;
 	GLfloat angle;
 	for (int i = 0; i <= numSegments; i++) {
-		angle = i * 2.0f * 3.14159265 / numSegments;
+		angle = i * 2 * 3.14159265 / numSegments;
 		glVertex2f(x+cos(angle) * tamanho, y+sin(angle) * tamanho);
 	}
 	glEnd();

@@ -11,7 +11,7 @@
 Window window(640, 640);
 
 std::vector<Bola> bolas;
-int FPS = 60;
+int FPS = 40;
 
 void pausa() {
 	for (size_t i = 0; i < bolas.size(); i++) {
