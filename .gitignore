@@ -17,3 +17,7 @@ Jogo_da_bola/.vs/
 Jogo_da_bola/Debug/Jogo_da_bola.exe
 Jogo_da_bola/Debug/Jogo_da_bola.ilk
 *.filters
+freeglut/Copying.txt
+*.suo
+.vs/
+freeglut/
