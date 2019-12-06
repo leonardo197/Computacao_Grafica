@@ -3,16 +3,19 @@
 #include <GL/glut.h>
 #include <stdio.h>
 #include <math.h>
+#include <ctime>
 
-Bola::Bola(void) {
+
+
+Bola::Bola() {
 	this->tamanho = 20;
 	this->red=1;
 	this->green=1;
 	this->blue=1;
-	this->velocidadeY=1;
-	this->velocidadeX=5;
-	this->x=400;
-	this->y=400;
+	this->velocidadeY= rand() % 10+5;
+	this->velocidadeX=rand() % 10+5;
+	this->x= tamanho;
+	this->y= tamanho;
 	this->vidas=3;
 }
 Bola::Bola(float red, float green, float blue) {
@@ -20,8 +23,8 @@ Bola::Bola(float red, float green, float blue) {
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
-	this->velocidadeY = 1;
-	this->velocidadeX = 2;
+	this->velocidadeY = rand() % 10 + 1;
+	this->velocidadeX = rand() % 10 + 1;
 	this->x = 200;
 	this->y = 200;
 	this->vidas = 3;
@@ -31,15 +34,15 @@ Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
-	this->velocidadeY = 2;
-	this->velocidadeX = 1;
+	this->velocidadeY = rand() % 10 + 1;
+	srand((int)time(0));//gera uma nova srand  para os valores seren diferentes cada ves que seija otilisada
+	this->velocidadeX = rand() % 10 + 1;
 	this->x = 200;
 	this->y = 300;
 	this->vidas = vidas;
 }
 
 void Bola::pintaBola() {
-	glClear(GL_COLOR_BUFFER_BIT);
 	glColor3f(red, green, blue);
 	glBegin(GL_TRIANGLE_FAN);
 	int numSegments = 100;
