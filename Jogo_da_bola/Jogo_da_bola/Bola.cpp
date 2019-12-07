@@ -5,15 +5,13 @@
 #include <math.h>
 #include <ctime>
 
-
-
 Bola::Bola() {
 	this->tamanho = 20;
 	this->red= (rand() % 365+1)/ 365.0;
 	this->green= (rand() % 365 +1) / 365.0;
 	this->blue= (rand() % 365 +1) / 365.0;
-	this->velocidadeY= rand() % 10+5;
-	this->velocidadeX=rand() % 10+5;
+	this->velocidadeY= rand() % 5+5;
+	this->velocidadeX=rand() % 5+5;
 	this->x= tamanho;
 	this->y= tamanho;
 	this->vidas=3;
@@ -25,8 +23,8 @@ Bola::Bola(float red, float green, float blue) {
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
-	this->velocidadeY = rand() % 10 + 5;
-	this->velocidadeX = rand() % 10 + 5;
+	this->velocidadeY = rand() % 5 + 5;
+	this->velocidadeX = rand() % 5 + 5;
 	this->x = 200;
 	this->y = 200;
 	this->vidas = 3;
@@ -38,9 +36,9 @@ Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
-	this->velocidadeY = rand() % 10 + 5;
+	this->velocidadeY = rand() % 5 + 5;
 	srand((int)time(0));//gera uma nova srand  para os valores seren diferentes cada ves que seija otilisada
-	this->velocidadeX = rand() % 10 + 5;
+	this->velocidadeX = rand() % 5 + 5;
 	this->x = 200;
 	this->y = 300;
 	this->vidas = vidas;
@@ -93,5 +91,43 @@ void Bola::pausaBola() {
 		velocidadeXP = 0;
 		velocidadeYP = 0;
 	}
-
+}
+void Bola::clickBola(int xRato, int yRato, Window window) {
+	float distaciaX;
+	float distaciaY;
+	BOOLEAN topX;
+	BOOLEAN topY;
+	yRato = window.windowY- yRato;
+	if (x<xRato) {
+		distaciaX = xRato - x;
+		topX = true;
+	}
+	else{
+		distaciaX = x - xRato;
+		topX = false;
+	}
+	if (distaciaX<=tamanho){
+		if (y < yRato) {
+			distaciaY = yRato - y;
+			topY = true;
+		}
+		else{
+			distaciaY = y - yRato;
+			topY = false;
+		}
+		if (distaciaY <= tamanho) {
+			if (topX){
+				velocidadeX = -velocidadeX;
+			}
+			else {
+				velocidadeX = velocidadeX;
+			}
+			if (topY) {
+				velocidadeY = -velocidadeY;
+			}
+			else {
+				velocidadeY = velocidadeY;
+			}
+		}
+	}
 }

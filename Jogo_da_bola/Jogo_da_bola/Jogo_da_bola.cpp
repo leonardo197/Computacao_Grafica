@@ -11,7 +11,7 @@
 Window window(640, 640);
 
 std::vector<Bola> bolas;
-int FPS = 40;
+int FPS = 30;
 
 void pausa() {
 	for (size_t i = 0; i < bolas.size(); i++) {
@@ -53,7 +53,9 @@ void rato(GLint button, GLint state, GLint x, GLint y) {
 
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-
+		for (size_t i = 0; i < bolas.size(); i++) {
+			bolas[i].clickBola(x, y,window);
+		}
 	}
 
 	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
@@ -77,15 +79,15 @@ void timer(int)
 }
 void testes() {
 
-	Bola bola1(0, 1, 1, 20, 3);
-	Bola bola(0, 1, 0);
-	Bola bola2 = Bola();
+	//Bola bola1(0, 1, 1, 20, 3);
+	//Bola bola(0, 1, 0);
+	//Bola bola2 = Bola();
 	Bola bola3 = Bola();
 
 
-	bolas.push_back(bola1);
-	bolas.push_back(bola);
-	bolas.push_back(bola2);
+	//bolas.push_back(bola1);
+	//bolas.push_back(bola);
+	//bolas.push_back(bola2);
 	bolas.push_back(bola3);
 }
 void main(int argc, char** argv){

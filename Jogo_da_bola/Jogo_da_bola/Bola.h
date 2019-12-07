@@ -19,4 +19,5 @@ public:
 	void pintaBola();
 	void moverBola(Window window);
 	void pausaBola();
+	void clickBola(int xRato,int yRato, Window window);
 };
