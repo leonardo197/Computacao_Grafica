@@ -2,9 +2,9 @@
 class Window
 {
 	public:
-	int WindowX;
-	int WindowY;
+	int windowX;
+	int windowY;
 
-	Window(int WindowX, int WindowY);
+	Window(int windowX, int windowY);
 
 };
