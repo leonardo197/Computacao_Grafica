@@ -20,10 +20,12 @@ public:
 	float getX();
 	float getY();
 	float getTamanho();
+	float getVelocidadeX();
+	float getVelocidadeY();
 
 	void pintaBola();
 	void moverBola(Window window);
 	void pausaBola();
 	void clickBola(int xRato,int yRato, Window window);
-	void colisaoDebolas(float xBola, float yBola, float tamanhoBola);
+	void colisaoDebolas(float xBola, float yBola, float tamanhoBola, float xVelocidade, float yVelocidade);
 };

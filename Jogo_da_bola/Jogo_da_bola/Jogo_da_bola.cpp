@@ -5,7 +5,6 @@
 #include"Window.h"
 #include<vector>
 #include <random>
-
 #include <ctime>
 //var
 Window window(440, 440);
@@ -75,7 +74,7 @@ void timer(int)
 		bolas[i].moverBola(window);
 		for (size_t ii = 0; ii < bolas.size(); ii++) {
 			if (i != ii) {
-				bolas[i].colisaoDebolas(bolas[ii].getX(), bolas[ii].getY(), bolas[ii].getTamanho());
+				bolas[i].colisaoDebolas(bolas[ii].getX(), bolas[ii].getY(), bolas[ii].getTamanho(), bolas[ii].getVelocidadeX(), bolas[ii].getVelocidadeX());
 			}
 		}
 	}
