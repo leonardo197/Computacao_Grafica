@@ -105,32 +105,24 @@ void Bola::pausaBola() {
 void Bola::clickBola(int xRato, int yRato, Window window) {
 	float distaciaX;
 	float distaciaY;
-	BOOLEAN topX;
-	BOOLEAN topY;
-	yRato = window.windowY- yRato;
-	if (x<xRato) {
+	yRato = window.windowY - yRato;
+	if (x < xRato) {
 		distaciaX = xRato - x;
-		topX = true;
 	}
-	else{
+	else {
 		distaciaX = x - xRato;
-		topX = false;
 	}
-	if (distaciaX<=tamanho){
-		if (y < yRato) {
-			distaciaY = yRato - y;
-			topY = true;
-		}
-		else{
-			distaciaY = y - yRato;
-			topY = false;
-		}
-		if (distaciaY <= tamanho) {
-
-				velocidadeX = -velocidadeX;
-				velocidadeY = -velocidadeY;
-
-		}
+	if (y < yRato) {
+		distaciaY = yRato - y;
+	}
+	else {
+		distaciaY = y - yRato;
+	}
+	if (distaciaX <= tamanho) {
+		velocidadeX = -velocidadeX;
+	}
+	if (distaciaY <= tamanho) {
+		velocidadeY = -velocidadeY;
 	}
 }
 void Bola::colisaoDebolas(float xBola, float yBola, float tamanhoBola) {
