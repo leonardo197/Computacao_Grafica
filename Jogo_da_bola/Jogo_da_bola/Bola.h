@@ -16,8 +16,18 @@ public:
 	Bola();
 	Bola(float red, float green, float blue);
 	Bola(float red, float green, float blue, float tamanho, float vidas);
+
+	float getX();
+	float getY();
+	float getTamanho();
+	float getVelocidadeX();
+	float getVelocidadeY();
+	float getVidas();
+
+	void apagaBola();
 	void pintaBola();
 	void moverBola(Window window);
 	void pausaBola();
 	void clickBola(int xRato,int yRato, Window window);
+	void colisaoDebolas(float xBola, float yBola, float tamanhoBola, float xVelocidade, float yVelocidade);
 };

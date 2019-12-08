@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <ctime>
-
+//tipos de bola
 Bola::Bola() {
 	this->tamanho = 20;
 	this->red= (rand() % 365+1)/ 365.0;
@@ -14,7 +14,7 @@ Bola::Bola() {
 	this->velocidadeX=rand() % 5+5;
 	this->x= tamanho;
 	this->y= tamanho;
-	this->vidas=3;
+	this->vidas=10;
 	this->velocidadeXP=0;
 	this->velocidadeYP=0;
 }
@@ -45,7 +45,36 @@ Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->velocidadeXP = 0;
 	this->velocidadeYP = 0;
 }
-
+//get
+float Bola::getX(){
+	return x;
+}
+float Bola::getY(){
+	return y;
+}
+float Bola::getTamanho(){
+	return tamanho;
+}
+float Bola::getVelocidadeX() {
+	return velocidadeX;
+}
+float Bola::getVelocidadeY() {
+	return velocidadeX;
+}
+float Bola::getVidas() {
+	return vidas;
+}
+//metodos internos 
+void Bola::apagaBola() {
+	vidas -=1;
+	if (vidas<=0)
+	{
+		tamanho = 0;
+		x = -10;
+		y = -10;
+	}
+}
+//metodos
 void Bola::pintaBola() {
 	glColor3f(red, green, blue);
 	glBegin(GL_TRIANGLE_FAN);
@@ -64,18 +93,22 @@ void Bola::moverBola(Window window) {
 	if (x >= window.windowX - tamanho) {
 		x = window.windowX - tamanho;
 		velocidadeX = -velocidadeX;
+		apagaBola();
 	}
-	if (x <= tamanho) {
+	if (x < tamanho) {
 		x = tamanho;
 		velocidadeX = -velocidadeX;
+		apagaBola();
 	}
 	if (y >= window.windowY - tamanho) {
 		y = window.windowY - tamanho;
 		velocidadeY = -velocidadeY;
+		apagaBola();
 	}
 	if (y <= tamanho) {
 		y = tamanho;
 		velocidadeY = -velocidadeY;
+		apagaBola();
 	}
 }
 void Bola::pausaBola() {
@@ -95,39 +128,51 @@ void Bola::pausaBola() {
 void Bola::clickBola(int xRato, int yRato, Window window) {
 	float distaciaX;
 	float distaciaY;
+	yRato = window.windowY - yRato;
+	if (x < xRato) {
+		distaciaX = xRato - x;
+	}
+	else {
+		distaciaX = x - xRato;
+	}
+	if (y < yRato) {
+		distaciaY = yRato - y;
+	}
+	else {
+		distaciaY = y - yRato;
+	}
+	if (distaciaX <= tamanho) {
+		velocidadeX = -velocidadeX;
+	}
+	if (distaciaY <= tamanho) {
+		velocidadeY = -velocidadeY;
+	}
+}
+void Bola::colisaoDebolas(float xBola, float yBola, float tamanhoBola, float xVelocidade, float yVelocidade) {
+	float difX;
+	float difY;
+	float difXY = tamanho + tamanhoBola ;
 	BOOLEAN topX;
 	BOOLEAN topY;
-	yRato = window.windowY- yRato;
-	if (x<xRato) {
-		distaciaX = xRato - x;
-		topX = true;
+
+	if (x >= xBola) {
+		topX = false;
+		difX = x - xBola;
 	}
 	else{
-		distaciaX = x - xRato;
-		topX = false;
+		topX = true;
+		difX = xBola - x;
 	}
-	if (distaciaX<=tamanho){
-		if (y < yRato) {
-			distaciaY = yRato - y;
-			topY = true;
-		}
-		else{
-			distaciaY = y - yRato;
-			topY = false;
-		}
-		if (distaciaY <= tamanho) {
-			if (topX){
-				velocidadeX = -velocidadeX;
-			}
-			else {
-				velocidadeX = velocidadeX;
-			}
-			if (topY) {
-				velocidadeY = -velocidadeY;
-			}
-			else {
-				velocidadeY = velocidadeY;
-			}
-		}
+	if (y >= yBola) {
+		topY = false;
+		difY = y - yBola;
+	}
+	else {
+		topY = true;
+		difY = yBola - y;
+	}
+	if (difY<= difXY && difX <= difXY) {
+			velocidadeX = -velocidadeX;
+			velocidadeY = -velocidadeY;
 	}
 }
