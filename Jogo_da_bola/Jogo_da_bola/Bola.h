@@ -22,7 +22,9 @@ public:
 	float getTamanho();
 	float getVelocidadeX();
 	float getVelocidadeY();
+	float getVidas();
 
+	void apagaBola();
 	void pintaBola();
 	void moverBola(Window window);
 	void pausaBola();

@@ -6,11 +6,13 @@
 #include<vector>
 #include <random>
 #include <ctime>
+#include <iostream>
 //var
 Window window(440, 440);
-
+int bolasForaJogo;
 std::vector<Bola> bolas;
 int FPS = 30;
+int pontos;
 
 void pausa() {
 	for (size_t i = 0; i < bolas.size(); i++) {
@@ -24,26 +26,10 @@ void teclas(unsigned char key, int x, int y) {
 	case 'Q':
 		exit(0);
 		break;
-	case 'r':
-	case 'R':
-
-		break;
 	case 'p':
 	case 'P':
 		pausa();
 		break;
-	case 'g':
-	case 'G':
-
-		break;
-	case 'b':
-	case 'B':
-
-		break;
-	case 'a':
-	case 'A':
-		break;
-
 	}
 }
 
@@ -70,24 +56,33 @@ void display() {
 }
 void timer(int)
 {
+	bolasForaJogo = bolas.size();
 	for (size_t  i = 0; i < bolas.size(); i++) {
 		bolas[i].moverBola(window);
-		for (size_t ii = 0; ii < bolas.size(); ii++) {
-			if (i != ii) {
-				bolas[i].colisaoDebolas(bolas[ii].getX(), bolas[ii].getY(), bolas[ii].getTamanho(), bolas[ii].getVelocidadeX(), bolas[ii].getVelocidadeX());
+		if (bolas[i].getVidas()<=0){
+			bolasForaJogo -= 1;
+		}else{
+			for (size_t ii = 0; ii < bolas.size(); ii++) {
+				if (i != ii) {
+					bolas[i].colisaoDebolas(bolas[ii].getX(), bolas[ii].getY(), bolas[ii].getTamanho(), bolas[ii].getVelocidadeX(), bolas[ii].getVelocidadeX());
+				}
 			}
 		}
 	}
+	pontos += 1;
+	if (bolasForaJogo==0){
+		std::cout << "Pontos " << pontos;
+		exit(0);
+	}
+
 	glutPostRedisplay();
 	glutTimerFunc(1000 / FPS, timer, 0);
 }
 void testes() {
-
 	Bola bola1(0, 1, 1, 20, 3);
 	Bola bola(0, 1, 0);
 	//Bola bola2 = Bola();
 	Bola bola3 = Bola();
-
 
 	bolas.push_back(bola1);
 	bolas.push_back(bola);
