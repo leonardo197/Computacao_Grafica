@@ -46,6 +46,16 @@ Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->velocidadeYP = 0;
 }
 
+float Bola::getX(){
+	return x;
+}
+float Bola::getY(){
+	return y;
+}
+float Bola::getTamanho(){
+	return tamanho;
+}
+
 void Bola::pintaBola() {
 	glColor3f(red, green, blue);
 	glBegin(GL_TRIANGLE_FAN);
@@ -116,18 +126,38 @@ void Bola::clickBola(int xRato, int yRato, Window window) {
 			topY = false;
 		}
 		if (distaciaY <= tamanho) {
-			if (topX){
+
 				velocidadeX = -velocidadeX;
-			}
-			else {
-				velocidadeX = velocidadeX;
-			}
-			if (topY) {
 				velocidadeY = -velocidadeY;
-			}
-			else {
-				velocidadeY = velocidadeY;
-			}
+
 		}
 	}
+}
+void Bola::colisaoDebolas(float xBola, float yBola, float tamanhoBola) {
+	float difX;
+	float difY;
+	float difXY = tamanho + tamanhoBola ;
+	BOOLEAN topX;
+	BOOLEAN topY;
+	if (x >= xBola) {
+		difX = x - xBola;
+		topX= false;
+	}
+	else{
+		difX = xBola - x;
+		topX = true;
+	}
+	if (y >= yBola) {
+		difY = y - yBola;
+		topY = false;
+	}
+	else {
+		difY = yBola - y;
+		topY = true;
+	}
+	if (difY<= difXY && difX <= difXY) {
+		velocidadeX = -velocidadeX;
+		velocidadeY = -velocidadeY;
+	}
+
 }

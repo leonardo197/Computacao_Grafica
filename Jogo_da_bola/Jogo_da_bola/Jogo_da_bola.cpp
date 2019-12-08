@@ -8,7 +8,7 @@
 
 #include <ctime>
 //var
-Window window(640, 640);
+Window window(440, 440);
 
 std::vector<Bola> bolas;
 int FPS = 30;
@@ -73,20 +73,25 @@ void timer(int)
 {
 	for (size_t  i = 0; i < bolas.size(); i++) {
 		bolas[i].moverBola(window);
+		for (size_t ii = 0; ii < bolas.size(); ii++) {
+			if (i != ii) {
+				bolas[i].colisaoDebolas(bolas[ii].getX(), bolas[ii].getY(), bolas[ii].getTamanho());
+			}
+		}
 	}
 	glutPostRedisplay();
 	glutTimerFunc(1000 / FPS, timer, 0);
 }
 void testes() {
 
-	//Bola bola1(0, 1, 1, 20, 3);
-	//Bola bola(0, 1, 0);
+	Bola bola1(0, 1, 1, 20, 3);
+	Bola bola(0, 1, 0);
 	//Bola bola2 = Bola();
 	Bola bola3 = Bola();
 
 
-	//bolas.push_back(bola1);
-	//bolas.push_back(bola);
+	bolas.push_back(bola1);
+	bolas.push_back(bola);
 	//bolas.push_back(bola2);
 	bolas.push_back(bola3);
 }
@@ -96,7 +101,7 @@ void main(int argc, char** argv){
 	testes();
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowSize(window.windowX, window.windowY);
-	glutInitWindowPosition(500, 500);
+	glutInitWindowPosition(300, 300);
 	glutCreateWindow("Jogo da bola");
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glMatrixMode(GL_MODELVIEW);
