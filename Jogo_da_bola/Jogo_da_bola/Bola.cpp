@@ -12,8 +12,8 @@ Bola::Bola() {
 	this->blue= (rand() % 365 +1) / 365.0;
 	this->velocidadeY= rand() % 5+5;
 	this->velocidadeX=rand() % 5+5;
-	this->x= tamanho;
-	this->y= tamanho;
+	this->x= rand() % 400;
+	this->y= rand() % 400;
 	this->vidas=10;
 	this->velocidadeXP=0;
 	this->velocidadeYP=0;
@@ -25,8 +25,8 @@ Bola::Bola(float red, float green, float blue) {
 	this->blue = blue;
 	this->velocidadeY = rand() % 5 + 5;
 	this->velocidadeX = rand() % 5 + 5;
-	this->x = 200;
-	this->y = 200;
+	this->x = rand() % 400;
+	this->y = rand() % 400;
 	this->vidas = 3;
 	this->velocidadeXP = 0;
 	this->velocidadeYP = 0;
@@ -39,8 +39,8 @@ Bola::Bola(float red, float green, float blue, float tamanho, float vidas) {
 	this->velocidadeY = rand() % 5 + 5;
 	srand((int)time(0));//gera uma nova srand  para os valores seren diferentes cada ves que seija otilisada
 	this->velocidadeX = rand() % 5 + 5;
-	this->x = 200;
-	this->y = 300;
+	this->x = rand() % 400;
+	this->y = rand() % 400;
 	this->vidas = vidas;
 	this->velocidadeXP = 0;
 	this->velocidadeYP = 0;

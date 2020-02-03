@@ -80,14 +80,17 @@ void timer(int)
 }
 void testes() {
 	Bola bola1(0, 1, 1, 20, 3);
-	Bola bola(0, 1, 0);
-	//Bola bola2 = Bola();
-	Bola bola3 = Bola();
+	Bola bola4(0, 1, 0);
 
 	bolas.push_back(bola1);
-	bolas.push_back(bola);
-	//bolas.push_back(bola2);
-	bolas.push_back(bola3);
+	bolas.push_back(bola4);
+
+	for (size_t i = 0; i < 2; i++)
+	{
+		Bola bola = Bola();
+		bolas.push_back(bola);
+	
+	}
 }
 void main(int argc, char** argv){
 	srand((int)time(0));//gera uma nova srand  para os valores seren diferentes cada ves que seija otilisada
