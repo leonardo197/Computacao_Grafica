@@ -24,6 +24,7 @@ public:
 	float getVelocidadeY();
 	float getVidas();
 
+	void mudaCor();
 	void apagaBola();
 	void pintaBola();
 	void moverBola(Window window);

@@ -7,9 +7,9 @@
 //tipos de bola
 Bola::Bola() {
 	this->tamanho = 20;
-	this->red= (rand() % 365+1)/ 365.0;
-	this->green= (rand() % 365 +1) / 365.0;
-	this->blue= (rand() % 365 +1) / 365.0;
+	this->red= 0;
+	this->green=0.25;
+	this->blue = 0;
 	this->velocidadeY= rand() % 5+5;
 	this->velocidadeX=rand() % 5+5;
 	this->x= rand() % 400;
@@ -66,6 +66,7 @@ float Bola::getVidas() {
 }
 //metodos internos 
 void Bola::apagaBola() {
+	mudaCor();
 	vidas -=1;
 	if (vidas<=0)
 	{
@@ -86,6 +87,21 @@ void Bola::pintaBola() {
 	}
 	glEnd();
 }
+
+void Bola::mudaCor() {
+	if (green<1){
+		this->green += 0.25;
+	}else if (red < 1){
+		this->red += 0.25;
+	}else if (blue < 1){
+		this->blue += 0.25;
+	}else{
+		green = 0;
+		red = 0;
+		blue = 0;
+	}
+}
+
 void Bola::moverBola(Window window) {
 	x += velocidadeX;
 	y += velocidadeY;
@@ -93,6 +109,7 @@ void Bola::moverBola(Window window) {
 	if (x >= window.windowX - tamanho) {
 		x = window.windowX - tamanho;
 		velocidadeX = -velocidadeX;
+
 		apagaBola();
 	}
 	if (x < tamanho) {

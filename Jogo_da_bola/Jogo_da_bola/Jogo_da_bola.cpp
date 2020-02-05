@@ -84,8 +84,8 @@ void testes() {
 
 	bolas.push_back(bola1);
 	bolas.push_back(bola4);
-
-	for (size_t i = 0; i < 2; i++)
+	
+	for (size_t i = 0; i < 4; i++)
 	{
 		Bola bola = Bola();
 		bolas.push_back(bola);
